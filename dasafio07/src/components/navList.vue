@@ -16,9 +16,8 @@
             </div>
           </div>
           <a class="menu">Lista de Filmes</a>
-          <a class="menu" >Visite</a>
-          
-        <a class="botao" >Lista de Filmes</a>
+         <router-link to="/"> <a class="menu" >Home</a></router-link>
+          <router-link to="/list"><a class="botao" >Lista de Filmes</a></router-link>  
         </ul>
       </div>
     </div>

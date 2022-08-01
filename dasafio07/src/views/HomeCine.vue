@@ -25,6 +25,5 @@ export default {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(55, 55, 55);
-
 }
 </style>

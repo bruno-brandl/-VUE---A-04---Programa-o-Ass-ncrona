@@ -5,8 +5,8 @@
       <p>Aqui você Pode Adicionar ou Assistir Filmes </p>
     </div>
     <div>
-      <router-link to="/list"> <button class="btn">Cadastrar Novo Filme</button></router-link>
-    </div>
+      <router-link to="/cadastro"> <button class="btn">Cadastrar Novo Filme</button></router-link>
+     </div>
   </div>
 </template>
 <script>

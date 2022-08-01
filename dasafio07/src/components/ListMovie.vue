@@ -3,16 +3,16 @@
     <h1>LISTA DE FILMES:</h1>
     <div class="user">
 
-      <a id="cpf">Ano</a>
-      <a id="FullName">Filmes</a>
+      <a id="ano">Ano</a>
+      <a id="filmes">Filmes</a>
     </div>
     <div id="renderResult">
 
       <ul>
 
-        <li id="content-cpf"><br>22/09/2004</li>
+        <li id="content-ano"><br>22/09/2004</li>
 
-        <li id="content-name">O Tomate </li>
+        <li id="content-filme">O Tomate </li>
         
         <li><i class="fa fa-eye" id="icon" aria-hidden="true"></i> </li>
       </ul>
@@ -25,33 +25,16 @@
 
 <style scoped>
 .list{
-    padding: 4vw;
+    padding: 3vw;
+    height: 43vw;
 }
-hr {
-  margin-left: 13%;
-  margin-right: 18%;
-}
-
-#cpf {
+#ano {
   margin-left: 19%;
 }
 
-#FullName {
+#filmes {
   margin-left: 294px;
 }
-
-.pagination {
-  cursor: pointer;
-  position: static;
-  margin-left: 23vw;
-  list-style: none;
-  display: inline-flex;
-  width: 50vw;
-  justify-content: space-between;
-  font-size: 22px;
-  
-}
-
 #renderResult {
   width: 64vw;
   margin-top: 28px;
@@ -71,11 +54,11 @@ ul {
 ul li {
   font-size: 19px;
   list-style-type: none;
-  margin-left: 2vw;
+  margin-left: 0vw;
 }
 
-#content-name {
-  margin-left: -20%;
+#content-filme {
+  margin-left: -28%;
   margin-top: 2vw;
 
 }
