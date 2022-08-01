@@ -5,8 +5,7 @@
         <a href="https://warren.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=ppc-warren_google_cpc_search_conversao_marca_key&utm_adgroup=marca&gclid=CjwKCAjwkYGVBhArEiwA4sZLuBX4iNmO8grMnu5ulmiZZSx_pPMa_1DKeITbs5nXzB7Nxoq62vwhVxoCZrAQAvD_BwE">
         </a>
         <ul>
-        <a class="menu">Adicionar Filme</a>
-
+        <router-link to="cadastro"><a class="menu">Adicionar Filme</a></router-link>
           <div class="dropdown">
             <a class="dropbtn">Curiosidades</a>
             <div class="dropdown-content">
