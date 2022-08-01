@@ -2,15 +2,18 @@
   <div>
     <navList />
     <MovieHead />
-  </div>
+
+</div>
 </template>
 <script>
 import navList from "../components/navList.vue"
 import MovieHead from "../components/MovieHead.vue"
+
 export default {
   components: {
     navList,
     MovieHead,
+
   },
 
 };
@@ -21,7 +24,7 @@ export default {
   margin: 0;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #6c6a6b;
+  background-color: rgb(55, 55, 55);
 
 }
 </style>
