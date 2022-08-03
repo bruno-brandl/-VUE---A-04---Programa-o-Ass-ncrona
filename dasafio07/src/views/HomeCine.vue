@@ -24,6 +24,9 @@ export default {
   margin: 0;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(55, 55, 55);
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%); 
+  background-repeat: no-repeat;
+  height: 5vw;
+
 }
 </style>

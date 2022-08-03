@@ -6,7 +6,7 @@
     </div>
     <div>
       <router-link to="/cadastro"> <button class="btn">Cadastrar Novo Filme</button></router-link>
-     </div>
+    </div>
   </div>
 </template>
 <script>
@@ -21,8 +21,6 @@
   align-items: center;
   justify-content: space-around;
   color: white;
-  background-color: #6c6a6b;
-  border-bottom: solid 12px #6c6a6b;
 }
 
 h1 {

@@ -28,10 +28,10 @@ export default {
     methods: {
         async postFilms() {
             try {
-                const newFilmw = { name: this.name }
+                const newFilmw = { name: this.name, ano: this.ano, genero: this.genero, sinopse: this.sinopse, link: this.link }
                 await axios.post(`http://localhost:3000/filmes`, newFilmw);
                 alert("Filme adicionado com secesso")
-                this.$router.push("list")
+                this.$router.push("/list")
             } catch (error) {
                 alert('erro')
             }
