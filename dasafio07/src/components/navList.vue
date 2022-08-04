@@ -101,7 +101,7 @@
   color: #ffffff;
   padding: 13px;
   border-radius: 24px;
-  background-color: black;
+  background-color: rgb(42, 41, 41);
   cursor: pointer;
 
 }

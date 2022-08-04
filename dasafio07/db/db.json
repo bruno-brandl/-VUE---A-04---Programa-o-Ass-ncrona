@@ -4,9 +4,9 @@
       "id": 0,
       "name": "Go to the gym",
       "ano": "21/08/2008",
-      "Genero": "Ação",
-      "Sinopse": "um legal de ação",
-      "Link": "www.youtube.com",
+      "genero": "Ação",
+      "sinopse": "um legal de ação",
+      "link": "www.youtube.com",
       "done": false
     },
     {
@@ -41,6 +41,30 @@
       "sinopse": "",
       "link": "",
       "id": 6
+    },
+    {
+      "name": "brunio",
+      "ano": "111111-11-11",
+      "genero": "111111111111",
+      "sinopse": "11111111111111",
+      "link": "11111111111111",
+      "id": 7
+    },
+    {
+      "name": "brufb",
+      "ano": "0001-11-01",
+      "Genero": "",
+      "Sinopse": "",
+      "Link": "",
+      "id": 8
+    },
+    {
+      "name": "brunão",
+      "ano": "0056-04-12",
+      "Genero": "nn sei",
+      "Sinopse": "ssss",
+      "Link": "www.ww.w.ww.w.cpm.cd",
+      "id": 9
     }
   ]
 }

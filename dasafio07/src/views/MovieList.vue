@@ -12,10 +12,10 @@
         <ul v-for="filme in filmes" :key="filme.id">
           <li id="content-ano">{{ filme.ano }}</li>
           <li id="content-filme">{{ filme.name }} </li>
-          <li @click="ModalOpen"><i class="fa fa-eye" id="icon" aria-hidden="true"></i> </li>
+          <li @click="ModalOpen(filme)"><i class="fa fa-eye" aria-hidden="true"></i></li>
         </ul>
       </div>
-      <ModalMovie :User_Prop="User_Prop" v-show="openModal" />
+      <ModalMovie :user_Prop="user_Prop" v-show="openModal" />
     </div>
 
   </div>
@@ -34,11 +34,13 @@ import { Component, Vue } from "vue-property-decorator";
 export default class MovieList extends Vue {
   openModal = false
   filmes = [{}]
-  User_Prop = [{}]
-  ModalOpen() {
+  user_Prop = {}
+
+  ModalOpen(MovieCheck: object) {
+    this.user_Prop = MovieCheck
     if (!this.openModal) {
       this.openModal = true
-       this.User_Prop = this.filmes
+
     }
   }
   async created() {

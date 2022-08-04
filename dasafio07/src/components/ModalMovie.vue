@@ -11,29 +11,24 @@
                 <div class="information-content">
 
                     <label>Nome</label>
-                    <span>{{ User_Prop.name }}</span>
-                    <span></span>
+                    <span>{{user_Prop.name}}</span>
                 </div>
                 <div class="information-content">
                     <label>ANO</label>
-                    <span></span>
-                </div>
-                <div class="information-content">
-                    <label>Nascimento</label>
-                    <span></span>
+                    <span>{{user_Prop.ano}}</span>
                 </div>
             </div>
 
             <div class="informations">
                 <div class="information-content">
                     <label>Genero</label>
-                    <span></span>
+                    <span>{{user_Prop.genero}}</span>
                 </div>
                 <div class="information-content">
                     <label>Sinopse</label>
-                    <span></span>
+                    <span>{{user_Prop.sinopse}}</span>
                     <p>Link</p>
-                    <span></span>
+                    <span>{{user_Prop.link}}</span>
                 </div>
             </div>
         </div>
@@ -43,29 +38,26 @@
 import { PropType } from 'vue'
 import axios from "axios";
 import { Component, Vue, Prop } from "vue-property-decorator";
-
+@Component({})
 export default class MovieList extends Vue {
-    @Prop() public User_Prop!: object []
+    @Prop() public user_Prop!: []
     Modal = true
     filmes = []
     closeModal() {
-        if (this.Modal == true) {
+        if (this.Modal) {
             this.Modal = false
         }
     }
 }
 </script>
 <style scoped>
-* {
-    color: rgb(255, 255, 255);
-}
-
 .information-modal {
     width: calc(55% - 158px);
     height: calc(70% - 109px);
     flex-direction: column;
     border-radius: 10px;
     background-color: white;
+    color: rgb(0, 0, 0);
     position: absolute;
     top: 45%;
     left: 50%;
