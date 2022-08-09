@@ -1,77 +1,80 @@
 <template>
-    <div>
+    <div class="information-modal" v-show="Modal">
         <div class="form-style">
-            <h2>Cadastre um Filme</h2>
+            <h2>Atualizar Filme <i @click="closeModal" id="close" class="fa fa-window-close" aria-hidden="true"></i>
+            </h2>
             <form>
                 <input v-model="name" type="text" placeholder="Nome do Filme" />
                 <input v-model="ano" type="date" placeholder="Ano" />
                 <input v-model="genero" type="text" placeholder="Genero" />
                 <input v-model="sinopse" type="text" placeholder="Sinopse" />
                 <input v-model="link" type="text" placeholder="Link trailer" />
-                <input type="submit" value="Cadastrar" @click="postFilms" />
+                <input type="submit" />
             </form>
         </div>
     </div>
 </template>
-<script>
-import axios from 'axios'
-export default {
-    data() {
-        return {
-            name: "",
-            ano: "",
-            genero: "",
-            sinopse: "",
-            link: ""
-        }
-    },
-    methods: {
-         async postFilms() {
-            if(this.name == " "){
-                alert("Preencha o nome")
-            } else if (this.ano == " "){
-                alert("Insira o ano de Lançamento")
-            } else if (this.genero == " "){
-               alert("Informe o Genero")
-            }else if (this.sinopse == " "){
-               alert("Informe a Sinopse")
-            }else if (this.link == " "){
-               alert("Informe o Link")
-            }else{
-            try {
-                const newFilmw = { name: this.name, ano: this.ano, genero: this.genero, sinopse: this.sinopse, link: this.link }
-                await axios.post(`http://localhost:3000/filmes`, newFilmw);
-                alert("Filme adicionado com secesso")
-                this.$router.push("/list")
-            } catch (error) {
-                alert('erro')
-            }
-            }
+<script lang="ts">
+import axios from "axios";
+import {Vue} from "vue-property-decorator";
+export default class MovieList extends Vue {
+    Modal = true
+    name = ""
+    ano = ""
+    genero = ""
+    sinopse = ""
+    link = ""
+    
+    closeModal() {
+        if (this.Modal == true) {
+            this.Modal = false
         }
     }
+
 }
+
 </script>
 <style scopeed>
+#close {
+    margin-left: 212px;
+    right: 11px;
+    border: none;
+    background-color: transparent;
+    height: 32px;
+    font-size: 19px;
+}
+
+#close:hover {
+    cursor: pointer;
+    transform: translateZ(0px) scale(1.2);
+}
+
 .form-style {
-    font-family: 'Open Sans Condensed', arial, sans;
     width: 500px;
     padding: 30px;
-    background: #FFFFFF;
-    margin: 50px auto;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
-    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
-    -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 1px 1100px rgba(0, 0, 0, 0.239);
 
 }
 
 h2 {
     background: #4D4D4D;
     font-family: 'Open Sans Condensed', sans-serif;
-    color: #797979;
+    color: white;
     font-size: 18px;
     font-weight: 100;
     padding: 20px;
-    margin: -30px -30px 30px -30px;
+    text-align: center;
+    margin: -38px -2px 35px -4px;
+
 }
 
 .form-style input[type="text"],

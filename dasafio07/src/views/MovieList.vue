@@ -12,10 +12,12 @@
         <ul v-for="filme in filmes" :key="filme.id">
           <li id="content-ano">{{ filme.ano }}</li>
           <li id="content-filme">{{ filme.name }} </li>
-          <li @click="ModalOpen(filme)"><i class="fa fa-eye" aria-hidden="true"></i></li>
+          <li @click="ModalOpen(filme)"><img id="svg" :src="editSvg" alt=""></li>
+          <li @click="edit"><img :src="iconSvg" alt=""></li>
         </ul>
       </div>
       <ModalMovie :user_Prop="user_Prop" v-show="openModal" />
+      <modalEdit v-show="EditModal"/>
     </div>
 
   </div>
@@ -24,23 +26,31 @@
 import axios from "axios";
 import ModalMovie from "../components/ModalMovie.vue"
 import navList from "../components/navList.vue"
+import modalEdit from "../components/modalEdit.vue"
 import { Component, Vue } from "vue-property-decorator";
 @Component({
   components: {
     ModalMovie,
     navList,
+    modalEdit
   }
 })
 export default class MovieList extends Vue {
   openModal = false
+  EditModal = false
   filmes = [{}]
   user_Prop = {}
-
+  editSvg = require('../assets/eye.svg')
+  iconSvg = require('../assets/iconEdit.svg')
+  edit(){
+    if(!this.EditModal){
+      this.EditModal = true
+    }
+  }
   ModalOpen(MovieCheck: object) {
     this.user_Prop = MovieCheck
     if (!this.openModal) {
       this.openModal = true
-
     }
   }
   async created() {
@@ -73,11 +83,11 @@ export default class MovieList extends Vue {
 }
 
 #filmes {
-  margin-left: 13vw;
+  margin-left: 19vw;
 }
 
 #renderResult {
-  width: 80vw;
+  width: 64vw;
   margin-top: 28px;
   display: flex;
   flex-direction: column;
@@ -95,14 +105,12 @@ ul {
 ul li {
   font-size: 19px;
   list-style-type: none;
-  margin-left: 0vw;
-  margin-right: 24vw;
 }
 
 #content-filme {
-  margin-left: -28%;
-  margin-top: 0vw;
-
+    margin-left: 7%;
+    margin-top: 0vw;
+    width: 11vw;
 }
 
 h1 {

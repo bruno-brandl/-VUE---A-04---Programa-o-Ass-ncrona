@@ -11,42 +11,47 @@
                 <div class="information-content">
 
                     <label>Nome</label>
-                    <span>{{user_Prop.name}}</span>
+                    <span>{{ user_Prop.name }}</span>
                 </div>
                 <div class="information-content">
                     <label>ANO</label>
-                    <span>{{user_Prop.ano}}</span>
+                    <span>{{ user_Prop.ano }}</span>
                 </div>
             </div>
 
             <div class="informations">
                 <div class="information-content">
                     <label>Genero</label>
-                    <span>{{user_Prop.genero}}</span>
+                    <span>{{ user_Prop.genero }}</span>
                 </div>
                 <div class="information-content">
                     <label>Sinopse</label>
-                    <span>{{user_Prop.sinopse}}</span>
+                    <span>{{ user_Prop.sinopse }}</span>
                     <p>Link</p>
-                    <span>{{user_Prop.link}}</span>
+                    <span>{{ user_Prop.link }}</span>
                 </div>
             </div>
         </div>
+        <button @click="deleteMovie(user_Prop.id)" class="btn">Deletar</button>
     </section>
 </template>
 <script lang="ts">
-import { PropType } from 'vue'
 import axios from "axios";
 import { Component, Vue, Prop } from "vue-property-decorator";
 @Component({})
 export default class MovieList extends Vue {
-    @Prop() public user_Prop!: []
+    @Prop() public user_Prop!: object
     Modal = true
     filmes = []
     closeModal() {
         if (this.Modal) {
             this.Modal = false
         }
+    }
+    async deleteMovie(id: number) {
+        await axios.delete(`http://localhost:3000/filmes/${id}`, {});
+        this.Modal = false
+         await axios.get(`http://localhost:3000/filmes`);   
     }
 }
 </script>
@@ -126,5 +131,38 @@ label {
 
 .modal-email {
     font-size: 13px;
+}
+
+.btn-danger {
+    font-size: 20px;
+    padding: 11px 55px;
+    border: 0px;
+    border-radius: 3px;
+    color: white;
+    background-color: rgb(12, 12, 12);
+    cursor: pointer;
+    margin-left: 38px;
+    margin-top: -7px;
+}
+
+.btn-danger:hover {
+    background-color: rgb(117, 111, 111);
+}
+
+.btn {
+    font-size: 20px;
+    padding: 11px 55px;
+    border: 0px;
+    border-radius: 3px;
+    color: white;
+    background-color: rgb(255, 20, 106);
+    cursor: pointer;
+    border-bottom: solid 2px #ff0054;
+    margin-left: 10px;
+    margin-top: -7px;
+}
+
+.btn:hover {
+    background-color: rgba(255, 20, 106, 0.616);
 }
 </style> 
