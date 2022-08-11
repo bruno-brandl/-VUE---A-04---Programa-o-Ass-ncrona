@@ -1,38 +1,57 @@
 <template>
-    <div class="information-modal" v-show="Modal">
+    <div class="information-modal">
         <div class="form-style">
-            <h2>Atualizar Filme <i @click="closeModal" id="close" class="fa fa-window-close" aria-hidden="true"></i>
+            <h2>Atualizar Filme <i id="close" class="fa fa-window-close" aria-hidden="true"></i>
             </h2>
             <form>
-                <input v-model="name" type="text" placeholder="Nome do Filme" />
-                <input v-model="ano" type="date" placeholder="Ano" />
-                <input v-model="genero" type="text" placeholder="Genero" />
-                <input v-model="sinopse" type="text" placeholder="Sinopse" />
-                <input v-model="link" type="text" placeholder="Link trailer" />
-                <input type="submit" />
+                <input v-model="filme.name" type="text" placeholder="Nome do Filme" />
+                <input type="date" placeholder="Ano" />
+                <input type="text" placeholder="Genero" />
+                <input type="text" placeholder="Sinopse" />
+                <input type="text" placeholder="Link trailer" />
+                <button @click="editList">Salvar</button>
             </form>
         </div>
     </div>
 </template>
 <script lang="ts">
 import axios from "axios";
-import {Vue} from "vue-property-decorator";
+import { Vue, Prop, Watch } from "vue-property-decorator";
+import { IFilme } from '@/components/types'
 export default class MovieList extends Vue {
-    Modal = true
-    name = ""
-    ano = ""
-    genero = ""
-    sinopse = ""
-    link = ""
-    
-    closeModal() {
-        if (this.Modal == true) {
-            this.Modal = false
-        }
+
+
+    private url: 'http://localhost:3000/filmes/';
+
+    public filme: IFilme = {
+        name: "",
+        ano: null,
+        genero: "",
+        sinopse: "",
+        link: "",
+        id: null,
     }
 
-}
+    @Prop() public filmeProp!: IFilme
+    // closeModal() {
+    //     this.Modal = false
+    // }
 
+    @Watch("filmeProp")
+    testeWatch() {
+        this.filme = this.filmeProp
+        console.log(this.filme);
+        console.log(this.filmeProp);
+    }
+
+    async editList(filme: object) {
+        try {
+            await axios.put(`/${this.url}`, filme)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 </script>
 <style scopeed>
 #close {

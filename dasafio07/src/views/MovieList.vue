@@ -1,3 +1,4 @@
+import { IFilme } from "@/components/types";
 <template>
   <div class="about">
     <navList />
@@ -13,11 +14,11 @@
           <li id="content-ano">{{ filme.ano }}</li>
           <li id="content-filme">{{ filme.name }} </li>
           <li @click="ModalOpen(filme)"><img id="svg" :src="editSvg" alt=""></li>
-          <li @click="edit"><img :src="iconSvg" alt=""></li>
+          <li @click="edit(filme)"><img :src="iconSvg" alt=""></li>
         </ul>
       </div>
       <ModalMovie :user_Prop="user_Prop" v-show="openModal" />
-      <modalEdit v-show="EditModal"/>
+      <modalEdit :filmeProp="dataFilme" v-show="EditModal" />
     </div>
 
   </div>
@@ -28,6 +29,7 @@ import ModalMovie from "../components/ModalMovie.vue"
 import navList from "../components/navList.vue"
 import modalEdit from "../components/modalEdit.vue"
 import { Component, Vue } from "vue-property-decorator";
+import { IFilme } from '@/components/types'
 @Component({
   components: {
     ModalMovie,
@@ -39,13 +41,21 @@ export default class MovieList extends Vue {
   openModal = false
   EditModal = false
   filmes = [{}]
+  dataFilme: IFilme = {
+    name: "",
+    ano: null,
+    genero: "",
+    sinopse: "",
+    link: "",
+    id: null,
+  }
   user_Prop = {}
   editSvg = require('../assets/eye.svg')
   iconSvg = require('../assets/iconEdit.svg')
-  edit(){
-    if(!this.EditModal){
-      this.EditModal = true
-    }
+
+  edit(filme: IFilme) {
+    this.dataFilme = filme;
+    this.EditModal = true;
   }
   ModalOpen(MovieCheck: object) {
     this.user_Prop = MovieCheck
@@ -108,9 +118,9 @@ ul li {
 }
 
 #content-filme {
-    margin-left: 7%;
-    margin-top: 0vw;
-    width: 11vw;
+  margin-left: 7%;
+  margin-top: 0vw;
+  width: 11vw;
 }
 
 h1 {
